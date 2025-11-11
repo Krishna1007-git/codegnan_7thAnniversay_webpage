@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials Slider</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0c1d3b;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .slider-container {
+      width: 80%;
+      max-width: 1000px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .testimonial-card {
+      min-width: 100%;
+      box-sizing: border-box;
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 10px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1abc9c;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .author {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #1abc9c;
+    }
+
+    .stars {
+      color: gold;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>Our Testimonials</h2>
+    <h3>What Our Students Have To Say</h3>
+
+    <div class="slider-container">
+      <div class="slider-wrapper">
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>I completed a Python course at Codegnan under the guidance of Manohar Chary sir... Highly recommend Codegnan for their excellent training!</p>
+          <div class="author">Naresh Bommarathi</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Wonderful learning experience at the 2 days web-development bootcamp, conducted by Ram Teja sir... He taught us many fundamentals of web-development.</p>
+          <div class="author">Poojitha</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Just finished a 2-day bootcamp on web development by Codegnan, it was a great experience especially under insightful mentorship by Mr. Siva Ram Teja.</p>
+          <div class="author">Abhay Emani</div>
+        </div>
+
+      </div>
+      <button class="nav-btn prev">&#10094;</button>
+      <button class="nav-btn next">&#10095;</button>
+    </div>
+  </div>
+
+  <script>
+    const wrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let index = 0;
+
+    function showSlide(i) {
+      if (i < 0) index = slides.length - 1;
+      else if (i >= slides.length) index = 0;
+      else index = i;
+      wrapper.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => showSlide(index - 1));
+    nextBtn.addEventListener('click', () => showSlide(index + 1));
+    setInterval(() => showSlide(index + 1), 5000);
+  </script>
+</body>
+</html>

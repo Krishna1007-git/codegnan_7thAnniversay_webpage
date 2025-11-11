@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Package Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    margin: 0;
+    background-color: #000000;
+}
+
+.carousel-container {
+    /* This will be important for the carousel's overall width and overflow */
+    max-width: 500px; /* Adjust as needed */
+    height: 80vh;
+    overflow: hidden; /* Hide cards outside this container */
+    position: relative;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust card width */
+    height: 400px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* For the background gradient */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto; /* Center the card initially */
+}
+
+/* Background gradient for the card, similar to the image */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: 50%; /* Adjust to cover the top half */
+    background: linear-gradient(135deg, rgba(200, 230, 255, 0.7), rgba(255, 255, 255, 0));
+    border-radius: 20px; /* Match card border-radius */
+    z-index: 0; /* Ensure it's behind content */
+}
+
+.card-image {
+    position: relative;
+    z-index: 1; /* Ensure image is above background gradient */
+    margin-bottom: 15px;
+}
+
+.student-img {
+    width: 150px; /* Adjust size of the person's image */
+    height: 150px;
+    border-radius: 50%; /* If you want a circular image */
+    object-fit: cover;
+    margin-top: -50px; /* Pull image up to overlap the background */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.package-info {
+    background-color: #e0f2f7; /* Light blue background for package info */
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.package-title {
+    font-weight: bold;
+    color: #007bff; /* Blue color for title */
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.package-subtitle {
+    color: #333;
+    font-size: 0.8em;
+}
+
+.package-icons img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.package-description {
+    color: #555;
+    font-size: 0.85em;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.company-logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+}
+
+.company-logo span {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #666;
+}
+</style>
+<body>
+    <div class="carousel-container">
+        <div class="card">
+            <div class="card-image">
+                <!-- Replace 'person-image.png' with your actual image path -->
+                <img src="./sathupati_preethi-removebg-preview.png" alt="Student" class="student-img">
+            </div>
+            <div class="card-content">
+                <div class="package-info">
+                    <span class="package-title">Sathupathi Preethi</span>
+                    <span class="package-subtitle"></span>
+                    <div class="package-icons">
+                        <img src="book-icon.png" alt="Book Icon"> <!-- Replace with your icon path -->
+                        <img src="upload-icon.png" alt="Upload Icon"> <!-- Replace with your icon path -->
+                    </div>
+                </div>
+                <p class="package-description">Unlimited Courses + Mentorship + Certification. Unlock Your Future!</p>
+                <div class="company-logo">
+                    <img src="./codegnan_png_600x600_l7bs9j.png" alt="Company Logo"> <!-- Replace with your logo path -->
+                    <span>Codegnan Academy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js">
+        
+
+
+ const carouselContainer = document.querySelector('.carousel-container');
+ const cards = document.querySelectorAll('.card');
+ let currentIndex = 0;
+ const cardWidth = cards[0].offsetWidth + 20; // Card width + margin
+
+function slideCards() {
+    currentIndex++;
+    if (currentIndex >= cards.length) {
+       currentIndex = 0; // Loop back to the start
+   }
+    carouselContainer.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+//     // You'd need a div inside carouselContainer to hold all cards,     // and apply transform to that inner div (often called a 'carousel-track').
+ }
+
+ setInterval(slideCards, 3000); // Slide every 3 seconds
+
+console.log("Carousel functionality would be implemented here in script.js!");
+console.log("You'll need more than one card in your HTML for a carousel effect.");
+    </script>
+</body>
+</html>
